@@ -29,7 +29,8 @@ gulp.task('sass', function() {
 // Scripts task
 gulp.task('scripts', function(){
   gulp.src('app/scripts/*.js')
-    .pipe(gulp.dest('build/js'));
+    .pipe(gulp.dest('build/js'))
+    .pipe(browserSync.stream());
 });
 
 // Watch task
@@ -39,6 +40,6 @@ gulp.task('watch', function() {
   gulp.watch('app/scripts/*.js', ['scripts']);
 });
 
-
+// Default task
 gulp.task('default', ['server', 'watch']);
 

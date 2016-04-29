@@ -1,11 +1,8 @@
 var gulp = require('gulp');
-var loadPlugins = require('gulp-load-plugins');
 var wiredep = require('wiredep').stream;
 var browserSync = require('browser-sync').create();
 var runSequence = require('run-sequence');
-
-var $ = loadPlugins();
-var reload = browserSync.reload;
+var $ = require('gulp-load-plugins')();
 
 // Paths
 var paths = {
@@ -23,7 +20,7 @@ var paths = {
 gulp.task('server', ['compile'], function() {
   browserSync.init({
     server: {
-      baseDir: ['.tmp', 'app'],
+      baseDir: ['.tmp'],
       routes: {
         '/bower_components': 'bower_components'
       }
@@ -31,7 +28,7 @@ gulp.task('server', ['compile'], function() {
   });
 
   // Watchers
-  gulp.watch(paths.main).on('change', reload);
+  gulp.watch(paths.main, ['html']);
   gulp.watch(paths.styles, ['styles']);
   gulp.watch(paths.scripts, ['scripts']);
 });
@@ -41,6 +38,14 @@ gulp.task('server', ['compile'], function() {
 gulp.task('compile', function(cb) {
   runSequence(['styles', 'scripts'], 'wiredep', cb);
 })
+
+
+// Html task
+gulp.task('html', function() {
+  return gulp.src(paths.main)
+    .pipe(gulp.dest('.tmp'))
+    .pipe(browserSync.stream());
+});
 
 
 // Styles task
@@ -81,7 +86,7 @@ gulp.task('wiredep', function() {
     .pipe($.inject(sources, {
       ignorePath: '/.tmp/'
     }))
-    .pipe(gulp.dest('app'));
+    .pipe(gulp.dest('.tmp'));
 });
 
 // Default task

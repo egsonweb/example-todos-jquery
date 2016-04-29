@@ -41,7 +41,6 @@
 
 
     create: function(e) {
-      console.log(e.which);
       var $input = $(e.target);
       var val = $input.val().trim();
       if(e.which === 13 && val) {

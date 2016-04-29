@@ -1,3 +1,13 @@
+// bower:scss
+@import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;  
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -82,7 +92,7 @@ body {
       display: none;
     }
     .edit {
-      background-color: papayawhip;
+      background-color: #ffa;
       display: block;
     }
   }

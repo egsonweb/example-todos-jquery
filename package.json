@@ -11,6 +11,12 @@
   "devDependencies": {
     "browser-sync": "^2.12.1",
     "gulp": "^3.9.1",
-    "gulp-sass": "^2.2.0"
+    "gulp-if": "^2.0.0",
+    "gulp-inject": "^4.0.0",
+    "gulp-load-plugins": "^1.2.2",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^2.2.0",
+    "run-sequence": "^1.1.5",
+    "wiredep": "^4.0.0"
   }
 }

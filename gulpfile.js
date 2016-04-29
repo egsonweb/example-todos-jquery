@@ -10,14 +10,12 @@ var paths = {
   images: 'app/assets/images/**',
   fonts: 'app/assets/fonts/**',
   styles: 'app/styles/*.scss',
-  scripts: 'app/scripts/*.js',
-  tmp: '.tmp',
-  dist: 'dist'
+  scripts: 'app/scripts/*.js'
 };
 
 
 // Server task
-gulp.task('server', ['compile'], function() {
+gulp.task('serve', ['compile'], function() {
   browserSync.init({
     server: {
       baseDir: ['.tmp'],
@@ -90,4 +88,4 @@ gulp.task('wiredep', function() {
 });
 
 // Default task
-gulp.task('default', ['server']);
+gulp.task('default', ['serve']);
